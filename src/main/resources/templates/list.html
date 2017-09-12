@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link th:href="@{design/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{design/css/font-awesome.min.css}" rel="stylesheet" />
+    <link th:href="@{design/css/custom/main.css}" rel="stylesheet" />
+    <script th:src="@{design/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{design/js/jquery.serializejson.js}"></script>
+    <script th:src="@{design/js/num.incre.js}"></script>
+    <script th:src="@{design/js/bootstrap.min.js}"></script>
+    <script th:src="@{design/js/custom/main.js}"></script>
+    <title>明细</title>
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                <div class="masthead clearfix">
+                    <div class="inner">
+                        <h3 class="masthead-brand">Cover</h3>
+                        <nav>
+                            <ul class="nav masthead-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="#">Features</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="inner cover">
+                    <ul class="list-group" th:each="entry,entryStat : ${allEntries}">
+                        <li class="list-group-item" th:text="${entry.category.name} + ${entry.amount}"></li>
+                    </ul>
+                </div>
+                <div class="mastfoot">
+                    <div class="inner">
+                        <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

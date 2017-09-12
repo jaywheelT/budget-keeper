@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link th:href="@{design/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{design/css/font-awesome.min.css}" rel="stylesheet" />
+    <link th:href="@{design/css/custom/main.css}" rel="stylesheet" />
+    <script th:src="@{design/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{design/js/jquery.serializejson.js}"></script>
+    <script th:src="@{design/js/num.incre.js}"></script>
+    <script th:src="@{design/js/bootstrap.min.js}"></script>
+    <script th:src="@{design/js/custom/main.js}"></script>
+
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
+
+    <title>首页</title>
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                <div class="masthead clearfix">
+                    <div class="inner">
+                        <h3 class="masthead-brand">Cover</h3>
+                        <nav>
+                            <ul class="nav masthead-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="#">Features</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="inner cover">
+                    <h1 class="cover-heading">Your expense:</h1>
+                    <p class="lead count" th:text="${allExpense}"></p>
+                    <p class="lead">
+                        <a href="#" data-toggle="modal" data-target="#expense-overlay" class="btn btn-lg btn-default">记一笔
+                    </a>
+                    </p>
+                </div>
+                <div class="mastfoot">
+                    <div class="inner">
+                        <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="expense-overlay" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">新增支出</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="well">
+                                <form id="expenseForm" novalidate="novalidate">
+                                    <div class="form-group">
+                                        <label for="amount" class="control-label">金额</label>
+                                        <input type="text" class="form-control" id="amount" name="amount" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="categoryId" class="control-label">类别</label>
+                                        <div class="btn-group category-group" role="group" aria-label="category" data-toggle="buttons"></div>
+                                        <button type="button" class="btn btn-default" data-oper="addCat" data-toggle="modal" data-target="#category-overlay">+</button>
+                                    </div>
+                                    <div class="form-group date">
+                                        <label for="date" class="control-label">日期</label>
+                                        <input type="text" class="form-control" id="date" name="date" />
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="comment" class="control-label">备注</label>
+                                        <input type="textarea" class="form-control" id="comment" name="comment" />
+                                    </div>
+                                    <input type="hidden" id="type" name="type" value="0" />
+                                    <button type="submit" class="btn btn-success btn-block addEntryBtn">确定</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="category-overlay" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">新增类别</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="well">
+                                <form id="catgoryForm" novalidate="novalidate">
+                                    <div class="form-group">
+                                        <label for="name" class="control-label">类别名称</label>
+                                        <input type="text" class="form-control" id="name" name="name" />
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-block addCatBtn">确定</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.count').nincre({
+            duration: 2000,
+            startFrom: -100
+        });
+    </script>
+</body>
+
+</html>
