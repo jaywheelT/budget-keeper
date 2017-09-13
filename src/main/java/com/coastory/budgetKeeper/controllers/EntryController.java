@@ -14,22 +14,22 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.persistence.EntityManager;
 
 @RestController
-@RequestMapping(path = "/bk")
-public class BalanceController {
+@RequestMapping(path = "/budgetKeeper")
+public class EntryController {
   @Autowired
   EntryRepository entryRepository;
 
   @Autowired
   EntityManager entityManager;
 
-  @RequestMapping(path = "/bal", method = RequestMethod.POST)
+  @RequestMapping(path = "/entry", method = RequestMethod.POST)
   public String addExpense(@RequestBody Entry expenseEntry) {
     entryRepository.save(expenseEntry);
     return Message.jsonMessage(new MessageBody(true, Entry.class.getName(), ActionType.ADD));
 
   }
 
-  @RequestMapping(path = "/bal", method = RequestMethod.GET, produces = "application/json")
+  @RequestMapping(path = "/entry", method = RequestMethod.GET, produces = "application/json")
   public Iterable<Entry> getEntries() {
     return entryRepository.findAll();
   }

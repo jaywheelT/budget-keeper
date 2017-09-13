@@ -3,7 +3,7 @@ $(document).ready(function() {
   $(".addCatBtn").click(function(e) {
     e.preventDefault();
     $.ajax({
-      url: "/bk/cat",
+      url: "/budgetKeeper/category",
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify($("#catgoryForm").serializeJSON()),
@@ -21,7 +21,7 @@ $(document).ready(function() {
       delete entryData.categoryId;
     }
     $.ajax({
-      url: "/bk/bal",
+      url: "/budgetKeeper/entry",
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify(entryData),
@@ -39,7 +39,7 @@ $(document).ready(function() {
 
 function formCategories() {
   $.ajax({
-    url: "/bk/cat",
+    url: "/budgetKeeper/category",
     dataType: "json",
     success: function(result) {
       var container = $(".category-group");

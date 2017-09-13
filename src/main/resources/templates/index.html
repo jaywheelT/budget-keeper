@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link th:href="@{design/css/bootstrap.min.css}" rel="stylesheet" />
-    <link th:href="@{design/css/font-awesome.min.css}" rel="stylesheet" />
-    <link th:href="@{design/css/custom/main.css}" rel="stylesheet" />
-    <script th:src="@{design/js/jquery-3.2.1.min.js}"></script>
-    <script th:src="@{design/js/jquery.serializejson.js}"></script>
-    <script th:src="@{design/js/num.incre.js}"></script>
-    <script th:src="@{design/js/bootstrap.min.js}"></script>
-    <script th:src="@{design/js/custom/main.js}"></script>
-
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
-
-    <title>首页</title>
-</head>
+<head th:replace="fragments/base/head :: head (pageTitle='首页')"></head>
 
 <body>
     <div class="site-wrapper">

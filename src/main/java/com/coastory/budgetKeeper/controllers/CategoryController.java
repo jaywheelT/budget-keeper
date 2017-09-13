@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/bk")
+@RequestMapping(path = "/budgetKeeper")
 public class CategoryController {
 
   @Autowired
   CategoryRepository categoryRepository;
 
-  @RequestMapping(path = "/cat", method = RequestMethod.POST)
+  @RequestMapping(path = "/category", method = RequestMethod.POST)
   public @ResponseBody MessageBody addCategory(@RequestBody Category category) {
     categoryRepository.save(category);
     return new MessageBody(true, Category.class.getName(), ActionType.ADD);
   }
 
-  @RequestMapping(path = "/cat", method = RequestMethod.GET, produces = "application/json")
+  @RequestMapping(path = "/category", method = RequestMethod.GET, produces = "application/json")
   public Iterable<Category> getCategories() {
     return categoryRepository.findAll();
   }
