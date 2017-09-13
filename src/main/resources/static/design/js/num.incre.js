@@ -5,7 +5,12 @@
             var startFrom = settings.startFrom;
             var match = startFrom.toString().startsWith('+') || startFrom.toString().startsWith('-');
             if(match) {
-                startFrom = parseInt($(this).text()) + startFrom;
+                var afterCal = parseInt($(this).text()) + startFrom;
+                if(afterCal >= 0) {
+                    startFrom = afterCal;
+                } else {
+                    startFrom = 0;
+                }
             }
             startFrom = parseFloat(startFrom).toFixed(2);
             $(this).prop('Counter', startFrom).animate({
