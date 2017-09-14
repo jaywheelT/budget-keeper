@@ -2,7 +2,7 @@ package com.coastory.budgetKeeper.models;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +25,7 @@ public class Entry {
   private Integer type;
 
   @JSONField(format = "MM/dd/yyyy")
-  private Date date;
+  private LocalDate date;
 
   @ManyToOne
   @JoinColumn(name = "category_id")
@@ -34,10 +34,12 @@ public class Entry {
   public Entry() {
   }
 
-  public Entry(double amount, String comment, Integer type) {
+  public Entry(double amount, String comment, Integer type, LocalDate date, Category category) {
     this.amount = amount;
     this.comment = comment;
     this.type = type;
+    this.date = date;
+    this.category = category;
   }
 
   public Long getId() {
@@ -80,11 +82,11 @@ public class Entry {
     this.category = category;
   }
 
-  public Date getDate() {
+  public LocalDate getDate() {
     return date;
   }
 
-  public void setDate(Date date) {
+  public void setDate(LocalDate date) {
     this.date = date;
   }
 }

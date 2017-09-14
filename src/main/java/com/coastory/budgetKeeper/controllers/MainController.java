@@ -1,23 +1,30 @@
 package com.coastory.budgetKeeper.controllers;
 
-import com.google.common.collect.Lists;
+import com.coastory.budgetKeeper.models.Entry;
 import com.coastory.budgetKeeper.repositories.EntryRepository;
+import com.coastory.budgetKeeper.services.BalanceService;
+import com.coastory.budgetKeeper.services.internal.EntryFliter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class MainController {
 
   @Autowired
-  EntryRepository entryRepository;
+  private EntryRepository entryRepository;
+
+  @Autowired
+  private BalanceService balanceService;
 
   @RequestMapping("/welcome")
   public String welcome(Map<String, Object> model) {
-    double allExpense = Lists.newArrayList(entryRepository.findAll()).stream()
-        .filter(entry -> entry.getType().equals(0))
+    List<Entry> entries = balanceService.filterEntries(new EntryFliter.Builder().type(0).build());
+
+    double allExpense = entries.stream()
         .mapToDouble(entry -> entry.getAmount())
         .sum();
 

@@ -8,6 +8,10 @@ import java.util.Locale;
 
 public class DateRangeAdapter {
 
+  public DateFilter defaultDateFilter() {
+    return adaptRange(LocalDate.now(), DateRange.ONE_MONTH);
+  }
+
   public DateFilter adaptRange(LocalDate end, DateRange dateRange) {
     LocalDate start = null;
     switch (dateRange) {

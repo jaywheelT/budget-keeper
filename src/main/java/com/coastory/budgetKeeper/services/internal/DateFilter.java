@@ -6,21 +6,10 @@ import com.coastory.budgetKeeper.utils.DateRangeAdapter;
 import java.time.LocalDate;
 
 public class DateFilter {
+
   private LocalDate start;
 
   private LocalDate end;
-
-  public DateFilter() {
-    new DateFilter(DateRange.ONE_MONTH);
-  }
-
-  public DateFilter(DateRange dateRange) {
-    new DateFilter(LocalDate.now(), dateRange);
-  }
-
-  public DateFilter(LocalDate localDate, DateRange dateRange) {
-    new DateRangeAdapter().adaptRange(localDate, dateRange);
-  }
 
   public DateFilter(LocalDate start, LocalDate end) {
     this.start = start;
