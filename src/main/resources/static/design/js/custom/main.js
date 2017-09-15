@@ -46,11 +46,11 @@ function formCategories() {
       container.empty();
       for (var i = 0; i < result.length; i++) {
         var catBtn = $("<label/>", {
-          class: "btn btn-primary btn-block"
+          class: "btn btn-primary"
         })
           .append(
             $("<i/>", {
-              class: "fa fa-jpy"
+              class: result[i].icon
             })
           )
           .append(

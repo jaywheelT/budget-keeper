@@ -23,9 +23,9 @@ public class EntryController {
   EntityManager entityManager;
 
   @RequestMapping(path = "/entry", method = RequestMethod.POST)
-  public String addExpense(@RequestBody Entry expenseEntry) {
+  public Message addExpense(@RequestBody Entry expenseEntry) {
     entryRepository.save(expenseEntry);
-    return JSON.toJSONString(new Message(true, Entry.class.getName(), ActionType.ADD));
+    return new Message(true, Entry.class.getName(), ActionType.ADD);
 
   }
 

@@ -20,8 +20,7 @@ public class CategoryController {
   CategoryRepository categoryRepository;
 
   @RequestMapping(path = "/category", method = RequestMethod.POST)
-  public @ResponseBody
-  Message addCategory(@RequestBody Category category) {
+  public @ResponseBody Message addCategory(@RequestBody Category category) {
     categoryRepository.save(category);
     return new Message(true, Category.class.getName(), ActionType.ADD);
   }

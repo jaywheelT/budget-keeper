@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="categoryId" class="control-label">类别</label>
-                                        <div class="btn-group category-group" role="group" aria-label="category" data-toggle="buttons"></div>
+                                        <div class="btn-group category-group btn-matrix" role="group" aria-label="category" data-toggle="buttons"></div>
                                         <button type="button" class="btn btn-default" data-oper="addCat" data-toggle="modal" data-target="#category-overlay">+</button>
                                     </div>
                                     <div class="form-group date">
@@ -77,6 +77,10 @@
                                         <label for="name" class="control-label">类别名称</label>
                                         <input type="text" class="form-control" id="name" name="name" />
                                     </div>
+                                    <div class="form-group">
+                                        <label for="icon" class="control-label">类别图标</label>
+                                        <input type="text" class="form-control" id="icon" name="icon" />
+                                    </div>
                                     <button type="submit" class="btn btn-success btn-block addCatBtn">确定</button>
                                 </form>
                             </div>
@@ -89,7 +93,18 @@
     <script>
         $('.count').nincre({
             duration: 2000,
-            startFrom: -100
+            startFrom: -300
+        });
+        $('#icon').fontIconPicker({
+            emptyIcon: false,
+            source: ["icon-money", "icon-user", "icon-food", "icon-coffee", "icon-apple", "icon-beer",
+                "icon-mobile", "icon-flight", "icon-truck", "icon-music", "icon-dollar", "icon-ok",
+                "icon-heart", "icon-star", "icon-plus", "icon-minus", "icon-attention", "icon-briefcase",
+                "icon-suitcase", "icon-book", "icon-award", "icon-flash", "icon-picture", "icon-camera",
+                "icon-home", "icon-cart-plus", "icon-glass", "icon-bus",
+            ],
+            theme: 'fip-bootstrap',
+            iconsPerPage: 50
         });
     </script>
 </body>
