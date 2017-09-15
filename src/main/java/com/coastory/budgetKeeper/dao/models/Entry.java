@@ -1,4 +1,4 @@
-package com.coastory.budgetKeeper.models;
+package com.coastory.budgetKeeper.dao.models;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

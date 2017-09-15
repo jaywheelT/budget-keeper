@@ -1,6 +1,6 @@
-package com.coastory.budgetKeeper.services.internal;
+package com.coastory.budgetKeeper.utils.models;
 
-import com.coastory.budgetKeeper.models.Category;
+import com.coastory.budgetKeeper.dao.models.Category;
 
 import java.util.Arrays;
 import java.util.List;

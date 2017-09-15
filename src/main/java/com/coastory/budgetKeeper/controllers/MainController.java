@@ -1,9 +1,9 @@
 package com.coastory.budgetKeeper.controllers;
 
-import com.coastory.budgetKeeper.models.Entry;
-import com.coastory.budgetKeeper.repositories.EntryRepository;
+import com.coastory.budgetKeeper.dao.models.Entry;
+import com.coastory.budgetKeeper.dao.repositories.EntryRepository;
 import com.coastory.budgetKeeper.services.BalanceService;
-import com.coastory.budgetKeeper.services.internal.EntryFliter;
+import com.coastory.budgetKeeper.utils.models.EntryFliter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
-package com.coastory.budgetKeeper.utils;
+package com.coastory.budgetKeeper.utils.models;
 
-public class MessageBody {
+public class Message {
 
   private boolean isSuccess;
 
@@ -8,7 +8,7 @@ public class MessageBody {
 
   private ActionType action;
 
-  public MessageBody(boolean isSuccess, String entityName, ActionType action) {
+  public Message(boolean isSuccess, String entityName, ActionType action) {
     this.isSuccess = isSuccess;
     this.entityName = entityName;
     this.action = action;

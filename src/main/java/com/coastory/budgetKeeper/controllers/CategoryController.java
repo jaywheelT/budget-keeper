@@ -1,16 +1,14 @@
 package com.coastory.budgetKeeper.controllers;
 
-import com.coastory.budgetKeeper.models.Category;
-import com.coastory.budgetKeeper.repositories.CategoryRepository;
-import com.coastory.budgetKeeper.utils.ActionType;
-import com.coastory.budgetKeeper.utils.Message;
-import com.coastory.budgetKeeper.utils.MessageBody;
+import com.coastory.budgetKeeper.dao.models.Category;
+import com.coastory.budgetKeeper.dao.repositories.CategoryRepository;
+import com.coastory.budgetKeeper.utils.models.ActionType;
+import com.coastory.budgetKeeper.utils.models.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,9 +20,10 @@ public class CategoryController {
   CategoryRepository categoryRepository;
 
   @RequestMapping(path = "/category", method = RequestMethod.POST)
-  public @ResponseBody MessageBody addCategory(@RequestBody Category category) {
+  public @ResponseBody
+  Message addCategory(@RequestBody Category category) {
     categoryRepository.save(category);
-    return new MessageBody(true, Category.class.getName(), ActionType.ADD);
+    return new Message(true, Category.class.getName(), ActionType.ADD);
   }
 
   @RequestMapping(path = "/category", method = RequestMethod.GET, produces = "application/json")

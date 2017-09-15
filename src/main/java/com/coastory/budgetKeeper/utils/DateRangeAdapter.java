@@ -1,6 +1,7 @@
 package com.coastory.budgetKeeper.utils;
 
-import com.coastory.budgetKeeper.services.internal.DateFilter;
+import com.coastory.budgetKeeper.utils.models.DateFilter;
+import com.coastory.budgetKeeper.utils.models.DateRange;
 
 import java.time.LocalDate;
 import java.time.temporal.WeekFields;
@@ -8,11 +9,11 @@ import java.util.Locale;
 
 public class DateRangeAdapter {
 
-  public DateFilter defaultDateFilter() {
+  public static DateFilter defaultDateFilter() {
     return adaptRange(LocalDate.now(), DateRange.ONE_MONTH);
   }
 
-  public DateFilter adaptRange(LocalDate end, DateRange dateRange) {
+  public static DateFilter adaptRange(LocalDate end, DateRange dateRange) {
     LocalDate start = null;
     switch (dateRange) {
       case ONE_WEEK:

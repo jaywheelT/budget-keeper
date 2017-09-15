@@ -1,8 +1,10 @@
 package com.coastory.budgetKeeper.utils;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
-import com.coastory.budgetKeeper.services.internal.DateFilter;
+import com.coastory.budgetKeeper.utils.models.DateFilter;
+import com.coastory.budgetKeeper.utils.models.DateRange;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -20,18 +22,16 @@ public class DateRangeAdapterTest {
     LocalDate yearStart = LocalDate.of(2017, 1, 1);
     LocalDate threeMonthStart = LocalDate.of(2017, 7, 1);
 
-    DateRangeAdapter dateRangeAdapter = new DateRangeAdapter();
-
-    DateFilter dateFilter = dateRangeAdapter.adaptRange(now, DateRange.ONE_MONTH);
+    DateFilter dateFilter = DateRangeAdapter.adaptRange(now, DateRange.ONE_MONTH);
     assertEquals(monthStart, dateFilter.getStart());
 
-    dateFilter = dateRangeAdapter.adaptRange(now, DateRange.ONE_WEEK);
+    dateFilter = DateRangeAdapter.adaptRange(now, DateRange.ONE_WEEK);
     assertEquals(weekStart, dateFilter.getStart());
 
-    dateFilter = dateRangeAdapter.adaptRange(now, DateRange.ONE_YEAR);
+    dateFilter = DateRangeAdapter.adaptRange(now, DateRange.ONE_YEAR);
     assertEquals(yearStart, dateFilter.getStart());
 
-    dateFilter = dateRangeAdapter.adaptRange(now, DateRange.THREE_MONTH);
+    dateFilter = DateRangeAdapter.adaptRange(now, DateRange.THREE_MONTH);
     assertEquals(threeMonthStart, dateFilter.getStart());
   }
 }

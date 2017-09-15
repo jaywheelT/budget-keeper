@@ -1,7 +1,4 @@
-package com.coastory.budgetKeeper.services.internal;
-
-import com.coastory.budgetKeeper.utils.DateRange;
-import com.coastory.budgetKeeper.utils.DateRangeAdapter;
+package com.coastory.budgetKeeper.utils.models;
 
 import java.time.LocalDate;
 

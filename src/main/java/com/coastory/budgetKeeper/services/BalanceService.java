@@ -1,7 +1,7 @@
 package com.coastory.budgetKeeper.services;
 
-import com.coastory.budgetKeeper.models.Entry;
-import com.coastory.budgetKeeper.services.internal.EntryFliter;
+import com.coastory.budgetKeeper.dao.models.Entry;
+import com.coastory.budgetKeeper.utils.models.EntryFliter;
 
 import java.util.List;
 

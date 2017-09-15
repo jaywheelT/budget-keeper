@@ -3,12 +3,12 @@ package com.coastory.budgetKeeper.services.impl;
 import static java.util.stream.Collectors.toList;
 
 import com.google.common.collect.Lists;
-import com.coastory.budgetKeeper.models.Category;
-import com.coastory.budgetKeeper.models.Entry;
-import com.coastory.budgetKeeper.repositories.EntryRepository;
+import com.coastory.budgetKeeper.dao.models.Category;
+import com.coastory.budgetKeeper.dao.models.Entry;
+import com.coastory.budgetKeeper.dao.repositories.EntryRepository;
 import com.coastory.budgetKeeper.services.BalanceService;
-import com.coastory.budgetKeeper.services.internal.DateFilter;
-import com.coastory.budgetKeeper.services.internal.EntryFliter;
+import com.coastory.budgetKeeper.utils.models.DateFilter;
+import com.coastory.budgetKeeper.utils.models.EntryFliter;
 import com.coastory.budgetKeeper.utils.DateRangeAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class BalanceServiceImpl implements BalanceService {
     List<Category> categories = entryFliter.getCategories();
     DateFilter dateFilter = entryFliter.getDateFilter();
     if (dateFilter == null) {
-      dateFilter = new DateRangeAdapter().defaultDateFilter();
+      dateFilter = DateRangeAdapter.defaultDateFilter();
     }
     LocalDate start = dateFilter.getStart();
     LocalDate end = dateFilter.getEnd();

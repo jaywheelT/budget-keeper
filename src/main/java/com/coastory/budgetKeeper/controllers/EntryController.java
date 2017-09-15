@@ -1,10 +1,10 @@
 package com.coastory.budgetKeeper.controllers;
 
-import com.coastory.budgetKeeper.models.Entry;
-import com.coastory.budgetKeeper.repositories.EntryRepository;
-import com.coastory.budgetKeeper.utils.ActionType;
-import com.coastory.budgetKeeper.utils.Message;
-import com.coastory.budgetKeeper.utils.MessageBody;
+import com.alibaba.fastjson.JSON;
+import com.coastory.budgetKeeper.dao.models.Entry;
+import com.coastory.budgetKeeper.dao.repositories.EntryRepository;
+import com.coastory.budgetKeeper.utils.models.ActionType;
+import com.coastory.budgetKeeper.utils.models.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +25,7 @@ public class EntryController {
   @RequestMapping(path = "/entry", method = RequestMethod.POST)
   public String addExpense(@RequestBody Entry expenseEntry) {
     entryRepository.save(expenseEntry);
-    return Message.jsonMessage(new MessageBody(true, Entry.class.getName(), ActionType.ADD));
+    return JSON.toJSONString(new Message(true, Entry.class.getName(), ActionType.ADD));
 
   }
 
