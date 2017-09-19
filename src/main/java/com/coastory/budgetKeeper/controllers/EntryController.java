@@ -1,17 +1,19 @@
 package com.coastory.budgetKeeper.controllers;
 
-import javax.persistence.EntityManager;
-
+import com.coastory.budgetKeeper.dao.models.Entry;
+import com.coastory.budgetKeeper.dao.repositories.EntryRepository;
+import com.coastory.budgetKeeper.utils.models.ActionType;
+import com.coastory.budgetKeeper.utils.models.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.coastory.budgetKeeper.dao.models.Entry;
-import com.coastory.budgetKeeper.dao.repositories.EntryRepository;
-import com.coastory.budgetKeeper.utils.models.ActionType;
-import com.coastory.budgetKeeper.utils.models.Message;
+import java.util.List;
+
+import javax.persistence.EntityManager;
 
 @RestController
 @RequestMapping(path = "/budgetKeeper")
@@ -32,5 +34,10 @@ public class EntryController {
   @RequestMapping(path = "/entry", method = RequestMethod.GET, produces = "application/json")
   public Iterable<Entry> getEntries() {
     return entryRepository.findAll();
+  }
+
+  @RequestMapping(path = "/entry/{categoryId}/comments", method = RequestMethod.GET)
+  public List<String> findSimilarComment(@PathVariable int categoryId) {
+    return entryRepository.findDistinctCommentsByCategoryId(categoryId);
   }
 }

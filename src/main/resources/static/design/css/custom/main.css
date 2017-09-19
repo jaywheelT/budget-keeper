@@ -2,9 +2,9 @@
  * Globals
  */
 * {
-    -webkit-border-radius: 0 !important;
-    -moz-border-radius: 0 !important;
-    border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 /*
  * Base structure
@@ -27,8 +27,8 @@ body {
   width: 100%;
   height: 100%; /* For at least Firefox */
   min-height: 100%;
-  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+  -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
 }
 .site-wrapper-inner {
   display: table-cell;
@@ -43,9 +43,8 @@ body {
 .inner {
   color: #fff;
   padding: 30px;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
-
 
 /*
  * Header
@@ -67,14 +66,14 @@ body {
   font-size: 16px;
   font-weight: bold;
   color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
+  color: rgba(255, 255, 255, 0.75);
   border-bottom: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
   border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255,255,255,.25);
+  border-bottom-color: rgba(255, 255, 255, 0.25);
 }
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
@@ -92,7 +91,6 @@ body {
   }
 }
 
-
 /*
  * Cover
  */
@@ -105,16 +103,14 @@ body {
   font-weight: bold;
 }
 
-
 /*
  * Footer
  */
 
 .mastfoot {
   color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
+  color: rgba(255, 255, 255, 0.5);
 }
-
 
 /*
  * Affix and center
@@ -150,7 +146,23 @@ body {
   }
 }
 
-.btn-matrix > .btn:nth-child(3n+4) {
+.btn-matrix {
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 100%;
+  display: block;
+}
+.btn-matrix > .btn {
+  margin-right: 3.45%;
+  margin-bottom: 3px;
+  width: 30%;
+  min-width: 115px;
+}
+.btn-group.btn-matrix > .btn:first-child {
+  margin-left: -1px;
+}
+
+/* .btn-matrix > .btn:nth-child(3n+4) {
   clear: left;
   margin-left: 0;
 }
@@ -164,4 +176,4 @@ body {
 }
 .btn-matrix > .btn > i {
   margin-right: 5px;
-}
+} */

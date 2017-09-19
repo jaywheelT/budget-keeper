@@ -13,10 +13,13 @@ public class EntryFliter {
 
   private List<Integer> types;
 
+  private String comment;
+
   private EntryFliter(Builder builder) {
     this.categories = builder.categories;
     this.dateFilter = builder.dateFilter;
     this.types = builder.types;
+    this.comment = builder.comment;
   }
 
   public List<Category> getCategories() {
@@ -43,6 +46,14 @@ public class EntryFliter {
     this.types = types;
   }
 
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
+
   public static class Builder {
 
     private List<Category> categories;
@@ -50,6 +61,8 @@ public class EntryFliter {
     private DateFilter dateFilter;
 
     private List<Integer> types;
+
+    private String comment;
 
     public Builder() {
     }
@@ -76,6 +89,11 @@ public class EntryFliter {
 
     public Builder date(DateFilter dateFilter) {
       this.dateFilter = dateFilter;
+      return this;
+    }
+
+    public Builder comment(String comment) {
+      this.comment = comment;
       return this;
     }
 
