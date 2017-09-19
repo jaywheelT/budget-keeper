@@ -30,10 +30,20 @@ $(document).ready(function() {
       }
     });
   });
-  $('#expenseForm .form-group.date').datepicker({
+  $("#expenseForm .form-group.date").datepicker({
     maxViewMode: 2,
     todayBtn: true,
     clearBtn: true
+  });
+  $("#isExpense").click(function(e) {
+    e.preventDefault();
+    $(".category-group").children('.btn-primary').show();
+    $(".category-group").children('.btn-success').hide();
+  });
+  $("#isIncome").click(function(e) {
+    e.preventDefault();
+    $(".category-group").children('.btn-success').show();
+    $(".category-group").children('.btn-primary').hide();
   });
 });
 
@@ -45,8 +55,12 @@ function formCategories() {
       var container = $(".category-group");
       container.empty();
       for (var i = 0; i < result.length; i++) {
+        var btnColor = "btn-primary";
+        if (result[i].type == 1) {
+          btnColor = "btn-success";
+        }
         var catBtn = $("<label/>", {
-          class: "btn btn-primary"
+          class: "btn " + btnColor
         })
           .append(
             $("<i/>", {

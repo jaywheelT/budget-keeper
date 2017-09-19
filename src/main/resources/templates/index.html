@@ -26,19 +26,25 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">新增支出</h4>
+                    <h4 class="modal-title">记一笔</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="well">
                                 <form id="expenseForm" novalidate="novalidate">
-                                    <div class="form-group">
+                                    <div class="form-label">
                                         <label for="amount" class="control-label">金额</label>
+                                    </div>
+                                    <div class="form-group form-inline">
+                                        <button type="button" class="btn btn-primary" id="isExpense">-</button>
                                         <input type="text" class="form-control" id="amount" name="amount" />
+                                        <button type="button" class="btn btn-success" id="isIncome">+</button>
+                                    </div>
+                                    <div class="form-label">
+                                        <label for="categoryId" class="control-label">类别</label>
                                     </div>
                                     <div class="form-group">
-                                        <label for="categoryId" class="control-label">类别</label>
                                         <div class="btn-group category-group btn-matrix" role="group" aria-label="category" data-toggle="buttons"></div>
                                         <button type="button" class="btn btn-default" data-oper="addCat" data-toggle="modal" data-target="#category-overlay">+</button>
                                     </div>
@@ -49,10 +55,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="comment" class="control-label">备注</label>
-                                        <input type="textarea" class="form-control" id="comment" name="comment" />
+                                        <textarea class="form-control" rows="3" id="comment" name="comment" />
                                     </div>
                                     <input type="hidden" id="type" name="type" value="0" />
-                                    <button type="submit" class="btn btn-success btn-block addEntryBtn">确定</button>
+                                    <button type="submit" class="btn btn-success addEntryBtn">确定</button>
                                 </form>
                             </div>
                         </div>
@@ -80,6 +86,12 @@
                                     <div class="form-group">
                                         <label for="icon" class="control-label">类别图标</label>
                                         <input type="text" class="form-control" id="icon" name="icon" />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="btn-group" role="group" data-toggle="buttons">
+                                            <label class="btn btn-default"><input type="radio" id="catType" name="type" value="0" />支出</label>
+                                            <label class="btn btn-default"><input type="radio" id="catType" name="type" value="1" />收入</label>
+                                        </div>
                                     </div>
                                     <button type="submit" class="btn btn-success btn-block addCatBtn">确定</button>
                                 </form>

@@ -27,7 +27,7 @@ public class CategoryController {
 
   @RequestMapping(path = "/category", method = RequestMethod.GET, produces = "application/json")
   public Iterable<Category> getCategories() {
-    return categoryRepository.findAll();
+    return categoryRepository.findAllByOrderByTypeDesc();
   }
 
   @RequestMapping(path = "/{className}/{instance}", method = RequestMethod.POST)
