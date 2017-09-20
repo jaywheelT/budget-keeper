@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -36,8 +37,15 @@ public class EntryController {
     return entryRepository.findAll();
   }
 
-  @RequestMapping(path = "/entry/{categoryId}/comments", method = RequestMethod.GET)
-  public List<String> findSimilarComment(@PathVariable int categoryId) {
+  @RequestMapping(path = "/entry/comments/{categoryId}", method = RequestMethod.GET, produces = "application/json")
+  public List<String> findSimilarCommentByCategoryId(@PathVariable int categoryId) {
     return entryRepository.findDistinctCommentsByCategoryId(categoryId);
+  }
+
+  @RequestMapping(path = "/entry/comments", method = RequestMethod.GET, produces = "application/json")
+  public List<String> findSimilarComment() {
+    /*return entryRepository.findDistinctComments();*/
+
+    return Arrays.asList("abc", "def");
   }
 }

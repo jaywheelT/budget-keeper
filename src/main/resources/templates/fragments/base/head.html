@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:fragment="head (pageTitle)">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,19 +11,22 @@
     <link th:href="@{design/css/fontIconPicker/jquery.fonticonpicker.grey.min.css}" rel="stylesheet" />
     <link th:href="@{design/css/fontIconPicker/jquery.fonticonpicker.bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{design/css/fontIconPicker/fontello/css/fontello.css}" rel="stylesheet" />
+    <link th:href="@{design/css/fontIconPicker/jquery.fonticonpicker.bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{design/css/bootstrap-tagsinput.css}" rel="stylesheet" />
+    <link th:href="@{design/css/bootstrap-tagsinput-typeahead.css}" rel="stylesheet" />
     <link th:href="@{design/css/custom/main.css}" rel="stylesheet" />
     <script th:src="@{design/js/jquery-3.2.1.min.js}"></script>
     <script th:src="@{design/js/jquery.serializejson.js}"></script>
     <script th:src="@{design/js/num.incre.js}"></script>
     <script th:src="@{design/js/bootstrap.min.js}"></script>
     <script th:src="@{design/js/jquery.fonticonpicker.min.js}"></script>
+    <script th:src="@{design/js/bootstrap-tagsinput.min.js}"></script>
     <script th:src="@{design/js/custom/main.js}"></script>
 
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
     <title th:text="${pageTitle}">Template title</title>
 </head>
+
 </html>

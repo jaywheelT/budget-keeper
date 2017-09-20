@@ -37,13 +37,44 @@ $(document).ready(function() {
   });
   $("#isExpense").click(function(e) {
     e.preventDefault();
-    $(".category-group").children('.btn-primary').show();
-    $(".category-group").children('.btn-success').hide();
+    $(".category-group")
+      .children(".btn-primary")
+      .show();
+    $(".category-group")
+      .children(".btn-success")
+      .hide();
   });
   $("#isIncome").click(function(e) {
     e.preventDefault();
-    $(".category-group").children('.btn-success').show();
-    $(".category-group").children('.btn-primary').hide();
+    $(".category-group")
+      .children(".btn-success")
+      .show();
+    $(".category-group")
+      .children(".btn-primary")
+      .hide();
+  });
+
+  var comments = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name"),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: {
+      url: "/budgetKeeper/entry/comments",
+      filter: function(list) {
+        return $.map(list, function(comment) {
+          return { name: comment };
+        });
+      }
+    }
+  });
+  comments.initialize();
+
+  $(".bootstrap-tagsinput").tagsinput({
+    typeaheadjs: {
+      name: "comments",
+      displayKey: "name",
+      valueKey: "name",
+      source: comments.ttAdapter()
+    }
   });
 });
 
