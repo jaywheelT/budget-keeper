@@ -1,18 +1,18 @@
-$(document).ready(function() {
+$(document).ready(function () {
   formCategories();
-  $(".addCatBtn").click(function(e) {
+  $(".addCatBtn").click(function (e) {
     e.preventDefault();
     $.ajax({
       url: "/budgetKeeper/category",
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify($("#catgoryForm").serializeJSON()),
-      success: function() {
+      success: function () {
         formCategories();
       }
     });
   });
-  $(".addEntryBtn").click(function(e) {
+  $(".addEntryBtn").click(function (e) {
     e.preventDefault();
     var entryData = $("#expenseForm").serializeJSON();
     if (entryData.hasOwnProperty("categoryId") && entryData.categoryId !== "") {
@@ -25,7 +25,7 @@ $(document).ready(function() {
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify(entryData),
-      success: function(result) {
+      success: function (result) {
         console.log(result);
       }
     });
@@ -35,7 +35,7 @@ $(document).ready(function() {
     todayBtn: true,
     clearBtn: true
   });
-  $("#isExpense").click(function(e) {
+  $("#isExpense").click(function (e) {
     e.preventDefault();
     $(".category-group")
       .children(".btn-primary")
@@ -44,7 +44,7 @@ $(document).ready(function() {
       .children(".btn-success")
       .hide();
   });
-  $("#isIncome").click(function(e) {
+  $("#isIncome").click(function (e) {
     e.preventDefault();
     $(".category-group")
       .children(".btn-success")
@@ -54,35 +54,14 @@ $(document).ready(function() {
       .hide();
   });
 
-  var comments = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name"),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    prefetch: {
-      url: "/budgetKeeper/entry/comments",
-      filter: function(list) {
-        return $.map(list, function(comment) {
-          return { name: comment };
-        });
-      }
-    }
-  });
-  comments.initialize();
-
-  $(".bootstrap-tagsinput").tagsinput({
-    typeaheadjs: {
-      name: "comments",
-      displayKey: "name",
-      valueKey: "name",
-      source: comments.ttAdapter()
-    }
-  });
+  initTagsInpt();
 });
 
 function formCategories() {
   $.ajax({
     url: "/budgetKeeper/category",
     dataType: "json",
-    success: function(result) {
+    success: function (result) {
       var container = $(".category-group");
       container.empty();
       for (var i = 0; i < result.length; i++) {
@@ -91,8 +70,8 @@ function formCategories() {
           btnColor = "btn-success";
         }
         var catBtn = $("<label/>", {
-          class: "btn " + btnColor
-        })
+            class: "btn " + btnColor
+          })
           .append(
             $("<i/>", {
               class: result[i].icon
@@ -109,6 +88,40 @@ function formCategories() {
           .append(result[i].name);
         container.append(catBtn);
       }
+
+      $("input[type=radio][name=categoryId]").change(function () {
+        initTagsInpt(this.value);
+      });
+    }
+  });
+
+}
+
+function initTagsInpt(categoryId) {
+  var url = "/budgetKeeper/entry/comments";
+  if (categoryId != undefined) {
+    url = url + "/" + categoryId;
+  }
+  var commentsData;
+  $.ajax({
+    url: url,
+    contentType: "application/json",
+    success: function (result) {
+      commentsData = result;
+      var comments = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: commentsData
+      });
+      comments.initialize();
+
+      $(".bootstrap-tagsinput").tagsinput({
+        maxTags: 1,
+        typeaheadjs: {
+          name: "comments",
+          source: comments.ttAdapter()
+        }
+      });
     }
   });
 }

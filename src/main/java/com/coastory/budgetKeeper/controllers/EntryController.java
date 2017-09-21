@@ -22,13 +22,17 @@ public class EntryController {
   @Autowired
   EntryRepository entryRepository;
 
-  @Autowired
-  EntityManager entityManager;
-
   @RequestMapping(path = "/entry", method = RequestMethod.POST)
-  public Message addExpense(@RequestBody Entry expenseEntry) {
+  public Message addEntries(@RequestBody Entry expenseEntry) {
     entryRepository.save(expenseEntry);
     return new Message(true, Entry.class.getName(), ActionType.ADD);
+
+  }
+
+  @RequestMapping(path = "/entry", method = RequestMethod.PATCH)
+  public Message updateEntry(@RequestBody Entry expenseEntry) {
+    entryRepository.save(expenseEntry);
+    return new Message(true, Entry.class.getName(), ActionType.UPDATE);
 
   }
 
@@ -44,8 +48,6 @@ public class EntryController {
 
   @RequestMapping(path = "/entry/comments", method = RequestMethod.GET, produces = "application/json")
   public List<String> findSimilarComment() {
-    /*return entryRepository.findDistinctComments();*/
-
-    return Arrays.asList("abc", "def");
+    return entryRepository.findDistinctComments();
   }
 }
