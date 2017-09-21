@@ -11,6 +11,9 @@ public interface EntryRepository extends CrudRepository<Entry, Long> {
   @Query("SELECT DISTINCT comment FROM Entry WHERE category_id = ?1")
   List<String> findDistinctCommentsByCategoryId(int categoryId);
 
+  @Query("SELECT DISTINCT comment FROM Entry WHERE category_id = ?1 AND amount = ?2")
+  List<String> findDistinctCommentsByCategoryIdAndAmount(int categoryId, double amount);
+
   @Query("SELECT DISTINCT comment FROM Entry")
   List<String> findDistinctComments();
 }

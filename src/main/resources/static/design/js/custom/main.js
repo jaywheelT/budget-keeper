@@ -90,38 +90,52 @@ function formCategories() {
       }
 
       $("input[type=radio][name=categoryId]").change(function () {
-        initTagsInpt(this.value);
+        initTagsInpt(this.value, $("input[name=amount]").val());
       });
     }
   });
 
 }
 
-function initTagsInpt(categoryId) {
+function initTagsInpt(categoryId, amount) {
   var url = "/budgetKeeper/entry/comments";
+  var matchUrl;
   if (categoryId != undefined) {
     url = url + "/" + categoryId;
+    if (amount != undefined && amount != "") {
+      matchUrl = url + "/" + amount + ".json";
+    }
   }
-  var commentsData;
+
   $.ajax({
     url: url,
     contentType: "application/json",
     success: function (result) {
-      commentsData = result;
       var comments = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: commentsData
+        local: result
       });
       comments.initialize();
 
-      $(".bootstrap-tagsinput").tagsinput({
+      $("#comment").tagsinput({
         maxTags: 1,
         typeaheadjs: {
           name: "comments",
           source: comments.ttAdapter()
         }
       });
+
+      if (matchUrl != undefined) {
+        $.ajax({
+          url: matchUrl,
+          contentType: "application/json",
+          success: function (matchResult) {
+            $("#comment").tagsinput("add", matchResult);
+          }
+        });
+      }
+
     }
   });
 }

@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.List;
-
-import javax.persistence.EntityManager;
 
 @RestController
 @RequestMapping(path = "/budgetKeeper")
@@ -41,13 +38,22 @@ public class EntryController {
     return entryRepository.findAll();
   }
 
+  @RequestMapping(path = "/entry/comments", method = RequestMethod.GET, produces = "application/json")
+  public List<String> findSimilarComment() {
+    return entryRepository.findDistinctComments();
+  }
+
   @RequestMapping(path = "/entry/comments/{categoryId}", method = RequestMethod.GET, produces = "application/json")
   public List<String> findSimilarCommentByCategoryId(@PathVariable int categoryId) {
     return entryRepository.findDistinctCommentsByCategoryId(categoryId);
   }
 
-  @RequestMapping(path = "/entry/comments", method = RequestMethod.GET, produces = "application/json")
-  public List<String> findSimilarComment() {
-    return entryRepository.findDistinctComments();
+  @RequestMapping(path = "/entry/comments/{categoryId}/{amount}",
+      method = RequestMethod.GET, produces = "application/json")
+  public String findSimilarCommentByCategoryId(@PathVariable int categoryId, @PathVariable double amount) {
+    return entryRepository.findDistinctCommentsByCategoryIdAndAmount(categoryId, amount)
+        .stream()
+        .findFirst()
+        .orElse(null);
   }
 }
