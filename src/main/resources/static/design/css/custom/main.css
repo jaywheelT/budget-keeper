@@ -192,3 +192,17 @@ body {
   width: 100%;
   text-align: left;
 }
+
+.entryList {
+  text-align: left;
+  min-height: 500px;
+}
+
+.entryList .list-group-item {
+  margin: 15px 5px;
+}
+
+.entryList .list-group-item .list-group-item-heading {
+  text-align: right;
+  font-weight: bold;
+}

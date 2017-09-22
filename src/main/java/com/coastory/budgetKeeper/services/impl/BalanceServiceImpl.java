@@ -34,7 +34,7 @@ public class BalanceServiceImpl implements BalanceService {
     LocalDate end = dateFilter.getEnd();
     List<Entry> entries;
     entries = getAllEntries().stream()
-        .filter(e -> types == null || types.contains(e.getType()))
+        .filter(e -> types == null || types.contains(e.getCategory().getType()))
         .filter(e -> categories == null || categories.contains(e.getCategory()))
         .filter(e -> start.isBefore(e.getDate()) || start.isEqual(e.getDate()))
         .filter(e -> end.isAfter(e.getDate()) || end.isEqual(e.getDate()))

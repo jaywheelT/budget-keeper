@@ -8,9 +8,16 @@
         <div class="site-wrapper-inner">
             <div class="cover-container">
                 <div th:replace="fragments/base/header :: header"></div>
-                <div class="inner cover">
-                    <ul class="list-group" th:each="entry,entryStat : ${allEntries}">
-                        <li class="list-group-item" th:text="${entry.category.name} + ${entry.amount}"></li>
+                <div class="entryList pre-scrollable">
+                    <ul class="list-group">
+                        <li th:each="entry,entryStat : ${allEntries}" class="list-group-item" 
+                            th:classappend="${entry.category.type == 0} ? 'list-group-item-warning' : 'list-group-item-success'">
+                            <h4 class="list-group-item-heading" th:text="'￥' + ${entry.amount}">List Group Item Heading</h4>
+                            <p class="list-group-item-text">
+                                <i th:class="${entry.category.icon}"></i>
+                                <span th:text="${entry.category.name}" th:remove="tag">title</span>
+                            </p>
+                        </li>
                     </ul>
                 </div>
                 <div th:replace="fragments/base/footer :: footer"></div>

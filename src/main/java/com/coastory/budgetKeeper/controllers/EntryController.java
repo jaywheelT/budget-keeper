@@ -43,11 +43,6 @@ public class EntryController {
     return entryRepository.findDistinctComments();
   }
 
-  @RequestMapping(path = "/entry/comments/{categoryId}", method = RequestMethod.GET, produces = "application/json")
-  public List<String> findSimilarCommentByCategoryId(@PathVariable int categoryId) {
-    return entryRepository.findDistinctCommentsByCategoryId(categoryId);
-  }
-
   @RequestMapping(path = "/entry/comments/{categoryId}/{amount}",
       method = RequestMethod.GET, produces = "application/json")
   public String findSimilarCommentByCategoryId(@PathVariable int categoryId, @PathVariable double amount) {

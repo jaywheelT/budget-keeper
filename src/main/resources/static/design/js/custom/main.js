@@ -99,14 +99,6 @@ function formCategories() {
 
 function initTagsInpt(categoryId, amount) {
   var url = "/budgetKeeper/entry/comments";
-  var matchUrl;
-  if (categoryId != undefined) {
-    url = url + "/" + categoryId;
-    if (amount != undefined && amount != "") {
-      matchUrl = url + "/" + amount + ".json";
-    }
-  }
-
   $.ajax({
     url: url,
     contentType: "application/json",
@@ -125,17 +117,23 @@ function initTagsInpt(categoryId, amount) {
           source: comments.ttAdapter()
         }
       });
-
-      if (matchUrl != undefined) {
-        $.ajax({
-          url: matchUrl,
-          contentType: "application/json",
-          success: function (matchResult) {
-            $("#comment").tagsinput("add", matchResult);
-          }
-        });
-      }
-
     }
   });
+
+  var matchUrl;
+  if (categoryId != undefined && amount != undefined && amount != "") {
+    matchUrl = url + "/" + categoryId + "/" + amount + ".json";
+  }
+
+  if (matchUrl != undefined) {
+    $.ajax({
+      url: matchUrl,
+      contentType: "application/json",
+      success: function (matchResult) {
+        $("#comment").tagsinput("add", matchResult);
+      }
+    });
+  }
+
+
 }

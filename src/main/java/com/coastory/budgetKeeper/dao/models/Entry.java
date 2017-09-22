@@ -22,8 +22,6 @@ public class Entry {
 
   private String comment;
 
-  private Integer type;
-
   @JSONField(format = "MM/dd/yyyy")
   private LocalDate date;
 
@@ -34,10 +32,9 @@ public class Entry {
   public Entry() {
   }
 
-  public Entry(double amount, String comment, Integer type, LocalDate date, Category category) {
+  public Entry(double amount, String comment, LocalDate date, Category category) {
     this.amount = amount;
     this.comment = comment;
-    this.type = type;
     this.date = date;
     this.category = category;
   }
@@ -64,14 +61,6 @@ public class Entry {
 
   public void setComment(String comment) {
     this.comment = comment;
-  }
-
-  public Integer getType() {
-    return type;
-  }
-
-  public void setType(Integer type) {
-    this.type = type;
   }
 
   public Category getCategory() {
