@@ -1,6 +1,7 @@
 package com.coastory.budgetKeeper.controllers;
 
 import com.coastory.budgetKeeper.dao.models.Entry;
+import com.coastory.budgetKeeper.dao.repositories.AccountRepository;
 import com.coastory.budgetKeeper.dao.repositories.EntryRepository;
 import com.coastory.budgetKeeper.services.BalanceService;
 import com.coastory.budgetKeeper.utils.models.EntryFliter;
@@ -16,6 +17,9 @@ public class MainController {
 
   @Autowired
   private EntryRepository entryRepository;
+
+  @Autowired
+  private AccountRepository accountRepository;
 
   @Autowired
   private BalanceService balanceService;
@@ -36,6 +40,12 @@ public class MainController {
   public String list(Map<String, Object> model) {
     model.put("allEntries", entryRepository.findAll());
     return "list";
+  }
+
+  @RequestMapping("/card")
+  public String card(Map<String, Object> model) {
+    model.put("allAccounts", accountRepository.findAll());
+    return "card";
   }
 
 }

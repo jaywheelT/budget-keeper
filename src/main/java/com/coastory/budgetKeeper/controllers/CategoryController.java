@@ -30,9 +30,4 @@ public class CategoryController {
     return categoryRepository.findAllByOrderByTypeDesc();
   }
 
-  @RequestMapping(path = "/{className}/{instance}", method = RequestMethod.POST)
-  public String test(@PathVariable String className, @PathVariable String instance, @RequestBody Category category) {
-    return className + "  " + instance + category.getName();
-  }
-
 }

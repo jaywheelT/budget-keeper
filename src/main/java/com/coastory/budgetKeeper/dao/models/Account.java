@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Balance {
+public class Account {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +18,9 @@ public class Balance {
 
   private String type;
 
-  public Balance() {
+  private String description;
+
+  public Account() {
   }
 
   public Integer getId() {
@@ -51,5 +53,13 @@ public class Balance {
 
   public void setType(String type) {
     this.type = type;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

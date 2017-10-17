@@ -212,3 +212,56 @@ body {
 .entryList .list-group-item-text i {
   float: left;
 }
+
+.accountList .well {
+  min-height: 20px;
+  padding: 0px;
+  margin-bottom: 20px;
+  background-color: #d9d9d9;
+  border: 1px solid #d9d9d9;
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  padding-left: 15px;
+  border: 0px;
+}
+.accountList .thumbnail .caption {
+  padding: 9px;
+  color: #333;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.accountList .icon-style {
+  margin-right: 15px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+.accountList p {
+  margin: 3px;
+}
+.accountList .well-add-card {
+  margin-bottom: 10px;
+}
+.accountList .btn-add-card {
+  margin-top: 20px;
+}
+.accountList .thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 6px solid #d9d9d9;
+  border-radius: 15px;
+  -webkit-transition: border 0.2s ease-in-out;
+  -o-transition: border 0.2s ease-in-out;
+  transition: border 0.2s ease-in-out;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.accountList .btn {
+  border-radius: 0px;
+}
+.accountList .btn-update {
+  margin-left: 15px;
+}
